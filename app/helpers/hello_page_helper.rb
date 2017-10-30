@@ -1,0 +1,2 @@
+module HelloPageHelper
+end
