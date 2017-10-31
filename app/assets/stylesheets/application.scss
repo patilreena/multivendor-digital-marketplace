@@ -1,72 +1,38 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
 
- */
- @import "bootstrap";
- @import "font-awesome-sprockets";
- @import "font-awesome";
- @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+*/
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
+@import "home";
 
- .banner {
- 	background-image: url("banner.jpg");
- 	width: 100%;
- 	opacity: 0.7;
- 	height: 400px;
-    background-size: cover;
- }
+body{
+	font-family: 'Open Sans', sans-serif;
+	font-family: Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    line-height: 1.5;
+    color: #24292e;
+    background-color: #fff;
+}
 
-.search {
-	margin-top: 0.7rem;
-}
-.login {
-	margin-top: 70px;
-	background-color: #515a63;
-}
-.top-button {
-	  padding-top: 10px;
-	  margin-top: 30px;
-	  margin-left: 40%;
- 	  font-family: 'Open Sans', sans-serif;
- 	  border: 3px solid #ffffff;
-
-}
-.sub-heading {
-	padding-top: 12%;
-    padding-left: 50px;
-    font-size: 20px;
-    letter-spacing: 1px;
-}
-.long-btn {
-	width: 100%;
-	background-color: #50ca8b;
-	border-color: #50ca8b;
-    color: #ffffff;
-    font-weight: 100;
-    font-size: 15px;
-    padding: 14px 20px;
-    letter-spacing: 1px;
-}
-.register {
-	background-image: url("hero-image-one.jpg");
-	height: 900px;
-	opacity: 1.5;
-	background-size: cover;
-}
-.foo {
-	width: 100%;
-
-}
-.buy {
-
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #efefef;
+  text-align: center;
 }

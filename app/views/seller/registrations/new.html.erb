@@ -7,14 +7,35 @@
        <div class="row">
         <div class="col">
           <%= link_to "MARKETPLACE", root_path, class: "btn btn-outline-light top-button" %>
-          <h6 class="text-center text-white sub-heading">REGISTER NEW ACCOUNT</h6>
+          <h6 class="text-center text-white sub-heading">REGISTER</h6>
         </div>
        </div>
       
+        <div class="row">
+        <div class="col mt-4">
+          <%= f.label :firstname, class:"text-white" %><br />
+          <%= f.text_field :firstname, autofocus: true, class: "form-control", placeholder: "firstname" %>
+        </div>
+       </div>
+
+        <div class="row">
+        <div class="col mt-4">
+          <%= f.label :lastname, class:"text-white" %><br />
+          <%= f.text_field :lastname, autofocus: true, class: "form-control", placeholder: "lastname" %>
+        </div>
+       </div>
+
        <div class="row">
         <div class="col mt-4">
           <%= f.label :username, class:"text-white" %><br />
           <%= f.text_field :username, autofocus: true, class: "form-control", placeholder: "username" %>
+        </div>
+       </div>
+
+       <div class="row">
+        <div class="col mt-4">
+          <%= f.label :website, class:"text-white" %><br />
+          <%= f.text_field :website, autofocus: true, class: "form-control", placeholder: "website" %>
         </div>
        </div>
 
@@ -25,12 +46,12 @@
         </div>
        </div>
       
-       <div class="row mt-4">
+       <!--<div class="row mt-4">
         <div class="col">
          
             <%= f.label :password, class:"text-white" %>
              <% if @minimum_password_length %>
-             <!-- <em>(<%#= @minimum_password_length %> characters minimum)</em> -->
+             <em>(<%#= @minimum_password_length %> characters minimum)</em> 
               <% end %><br />
               <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
           </div>
@@ -42,10 +63,10 @@
             <%= f.label :password_confirmation, class:"text-white" %><br />
             <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
           </div>
-        </div>
+        </div>-->
          <div class="row mt-4">
                 <div class="col">
-                   <%= f.submit "REGISTER", class: "long-btn" %>
+                   <%= f.submit "SUBMIT", class: "long-btn" %>
                    
                 </div>
               </div>

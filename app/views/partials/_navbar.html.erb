@@ -1,22 +1,22 @@
  <nav class="navbar navbar-expand-lg fixed-top navbar-light ">
-   <button type="button" class="btn btn-outline-dark logo">MARKETPLACE</button>
+   <button type="button" class="btn btn-outline-light logo text-white">MARKETPLACE</button>
    <ul class="navbar-nav ml-auto">
    	<li class="nav-item">
-    <i class="fa fa-search mr-5 search"> </i>
+    <i class="fa fa-search mr-5 search text-white"> </i>
   </li>
    <li class="nav-item">
           <% if user_signed_in? %>
             <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => "nav-link") %>      <% else %>
-            <%= link_to('SIGN IN', new_user_session_path, :class => "nav-link mr-4")  %>
+            <%= link_to('SIGN IN', new_user_session_path, :class => "nav-link mr-4 text-white")  %>
           <% end %>
         </li>
         <li class="nav-item">
            <% unless user_signed_in? %>
-            <%= link_to('JOIN NOW', new_user_registration_path, :class => "nav-link mr-4")  %>
+            <%= link_to('JOIN NOW', new_user_registration_path, :class => "nav-link mr-4 text-white")  %>
            <% end %>
         </li>
     <li class="navbar-item">
-     <i class="fa fa-shopping-cart mr-4 search" aria-hidden="true"></i>
+     <i class="fa fa-shopping-cart mr-4 search text-white"></i>
   </li>
    </ul>
  </nav>
