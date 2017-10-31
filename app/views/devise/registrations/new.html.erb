@@ -1,0 +1,68 @@
+<section class="fdb-block register">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5 text-left">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="fdb-box">
+       <div class="row">
+        <div class="col">
+          <button type="button" class="btn btn-outline-light top-button">MARKETPLACE</button>
+          <h6 class="text-center text-white sub-heading">REGISTER NEW ACCOUNT</h6>
+        </div>
+       </div>
+      
+       <div class="row">
+        <div class="col mt-4">
+          <%= f.label :username, class:"text-white" %><br />
+          <%= f.text_field :username, autofocus: true, class: "form-control", placeholder: "username" %>
+        </div>
+       </div>
+
+       <div class="row">
+        <div class="col mt-4">
+          <%= f.label :email, class:"text-white" %><br />
+          <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
+        </div>
+       </div>
+      
+       <div class="row mt-4">
+        <div class="col">
+         
+            <%= f.label :password, class:"text-white" %>
+             <% if @minimum_password_length %>
+             <!-- <em>(<%#= @minimum_password_length %> characters minimum)</em> -->
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+          </div>
+        </div>
+      
+
+        <div class="row mt-4">
+          <div class="col">
+            <%= f.label :password_confirmation, class:"text-white" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+          </div>
+        </div>
+         <div class="row mt-4">
+                <div class="col">
+                   <%= f.submit "REGISTER", class: "long-btn" %>
+                   
+                </div>
+              </div>
+       <!--  <div class="row mt-4">
+          <div class="col">
+            <%= render "devise/shared/links" %>
+          </div>
+        </div> -->
+        <% end %>
+       </div>
+      </div>
+    </div>
+</section>
+
+
+ 
+
+
+
+ 
