@@ -6,11 +6,15 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
-  	<%= render :partial => "partials/navbar" %>
-    <%= yield %>
-    <%= render :partial => "partials/footer" %>
+    
+      <%= render :partial => "partials/navbar" %>
+      <div id="wrapper">
+        <%= yield %>
+      </div>
+      <%= render :partial => "partials/footer" %>
   </body>
 </html>

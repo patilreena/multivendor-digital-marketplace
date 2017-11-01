@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  method: MyString
+  status: MyString
+  trans_id: MyString
+  order: one
+
+two:
+  method: MyString
+  status: MyString
+  trans_id: MyString
+  order: two

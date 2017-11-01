@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :payments
+  resources :licenses
+  resources :cart_products
+  resources :carts
+  resources :images
+  resources :products
+  resources :ratings
+  resources :orders
   root 'home#index'
 
   devise_for :users

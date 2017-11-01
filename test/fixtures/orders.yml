@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  guest_token: MyString
+  total_amount: 1.5
+  status: MyText
+  user: one
+  product_id: one
+
+two:
+  guest_token: MyString
+  total_amount: 1.5
+  status: MyText
+  user: two
+  product_id: two
