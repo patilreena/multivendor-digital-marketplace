@@ -1,6 +1,29 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <h4 class="text-center pt-5"> Product name</h4>
+</div>
 
-<p>
+<section class="fdb-block pb-0 pt-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 ml-auto col-md-6 col-lg-5">
+        <h1><%= @product.title %></h1>
+        <p class="text-h3"><%= @product.description %></p>
+        <p class="text-h3"><%= @product.long_description %></p>
+        <p class="text-h4 text-primary"> <%= number_to_currency @product.price %>
+        <p class="text-h4 text-primary"><%= @product.asset.url %></p>
+        <%= render "product_row", product: @product, order_item: @order_item %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <%= render 'products/stripe' %>
+    <%= render 'products/disqus' %>
+  </div>
+</section>
+
+        
+<!-- <p>
   <strong>Title:</strong>
   <%= @product.title %>
 </p>
@@ -30,25 +53,14 @@
   <%= @product.status %>
 </p>
 
-<!-- <p>
-  <strong>Created by:</strong>
-  <%= @product.created_by %>
-</p>
 
 <p>
-  <strong>Is deleted:</strong>
-  <%= @product.is_deleted %>
+  <strong>Asset:</strong>
+  <%= @product.asset.url %>
 </p>
 
-<p>
-  <strong>Is active:</strong>
-  <%= @product.is_active %>
-</p>
 
-<p>
-  <strong>Sku:</strong>
-  <%= @product.sku %>
-</p> -->
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+ -->
