@@ -21,20 +21,13 @@ class RatingsController < ApplicationController
   def edit
   end
 
+
   # POST /ratings
   # POST /ratings.json
   def create
-    @rating = Rating.new(rating_params)
-
-    respond_to do |format|
-      if @rating.save
-        format.html { redirect_to @rating, notice: 'Rating was successfully created.' }
-        format.json { render :show, status: :created, location: @rating }
-      else
-        format.html { render :new }
-        format.json { render json: @rating.errors, status: :unprocessable_entity }
-      end
-    end
+    @product = Product.find(params[:product_id])
+    @product.ratings.create(rating_params)
+    redirect_to product_path(@product)
   end
 
   # PATCH/PUT /ratings/1

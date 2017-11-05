@@ -1,10 +1,58 @@
-<!-- <h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p> -->
-
 <div class="banner">
-	<div class="action-btns text-center">
-		 <button type="button" class="btn">Buy Now</button>
-		<!--  <button type="button" class="btn">Start selling</button> -->
-		<%= link_to '<button type="button">Start selling</button>'.html_safe, new_user_registration_path %>
-	</div>
+  <div class="action-btns text-center">
+    <%= link_to '<button type="button" class="btn">Buy now</button>'.html_safe, products_path %>
+    <%= link_to '<button type="button" class="btn">Start selling</button>'.html_safe, new_user_registration_path %>
+  </div>
+</div>
+
+
+<div class="container">
+ <h4 class="text-center pt-5"> Products</h4>
+ <div class="flexslider">
+  <ul class="slides">
+    <li>
+      <%= image_tag "slide1.jpg"%>
+    </li>
+    <li>
+      <%= image_tag "slide2.jpg"%>
+    </li>
+    <li>
+      <%= image_tag "slide3.jpg"%>
+    </li>
+    <li>
+     <%= image_tag "slide3.jpg"%>
+    </li>
+    <li>
+     <%= image_tag "slide3.jpg"%>
+    </li>
+    <li>
+     <%= image_tag "slide3.jpg"%>
+    </li>
+   </ul>
+ </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <%= image_tag "slide1.jpg", class:"img" %>
+    </div>
+    <div class="col-sm">
+       <%= image_tag "slide1.jpg", class:"img"%>
+    </div>
+    <div class="col-sm">
+       <%= image_tag "slide1.jpg", class:"img"%>
+    </div>
+  </div>
+  <div class="row pt-5">
+    <div class="col-sm">
+      <%= image_tag "slide1.jpg", class:"img" %>
+    </div>
+    <div class="col-sm">
+       <%= image_tag "slide1.jpg", class:"img"%>
+    </div>
+    <div class="col-sm">
+       <%= image_tag "slide1.jpg", class:"img"%>
+    </div>
+  </div>
 </div>

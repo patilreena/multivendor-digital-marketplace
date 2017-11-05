@@ -16,9 +16,20 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+
 //= require_tree .
 
-var idx = Math.floor((new Date().getHours()));
-var body = document.getElementsByTagName("body")[0];
-body.className = "heaven-" + idx;
+//= require toastr
 
+
+
+$(window).on('load', function() {
+  $('.flexslider').flexslider({
+    animation: "slide",
+    animationLoop: false,
+    itemWidth: 210,
+    itemMargin: 5,
+    minItems: 2,
+    maxItems: 4
+  });
+});
