@@ -2,8 +2,19 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
 
   protect_from_forgery with: :exception
+  protect_from_forgery with: :exception
+  helper_method :current_order
+
+  def current_order
+    if !session[:order_id].nil?
+      Order.find(session[:order_id])
+    else
+      Order.new
+    end
+  end
 
   private
+  
   def layout_by_resource
     if devise_controller?
       "auth"
@@ -17,3 +28,5 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     end
 end
+
+
