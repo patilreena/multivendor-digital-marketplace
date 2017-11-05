@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
+  get 'order_items/create'
+
+  get 'order_items/update'
+
+  get 'order_items/destroy'
+
   resources :payments
   resources :licenses
-  resources :cart_products
   resources :carts
   resources :images
-  resources :products
-  resources :ratings
+  resources :products do
+    resources :ratings
+  end
   resources :orders
+  resources :order_items, only: [:create, :update, :destroy]
+  resources :charges
   root 'home#index'
 
   devise_for :users
