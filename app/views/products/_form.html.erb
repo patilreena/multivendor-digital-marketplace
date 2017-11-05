@@ -1,112 +1,71 @@
-<%= form_for(product) do |f| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
-      <ul>
-       <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <section class="fdb-block">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-8 col-lg-8 col-xl-6">
-          <div class="row">
-            <div class="col">
-  <div class="row">
-    <div class="col mt-4">
-     <label>Title</label>
-       <%= f.text_field :title, id: :product_title, :class => "form-control" %>
-    </div>
-  </div>
-
-  <div class="row align-items-center">
-    <div class="col mt-4">
-     <label>Description</label>
-     <%= f.text_area :description,  id: :product_description, :class => "form-control"%> 
-    </div>
-  </div>
-
-  <div class="row align-items-center">
-    <div class="col mt-4">
-     <label>Long description</label>
-     <%= f.text_area :long_description, id: :product_longdescription, :class => "form-control" %>
-    </div>
-  </div>
-
-  <div class="row align-items-center">
-    <div class="col mt-4">
-     <label>Price</label>
-     <%= f.text_field :price,  id: :product_price, :class => "form-control" %>
-    </div>
-  </div>
-
-  <div class="row align-items-center">
-    <div class="col mt-4">
-      <label>Commision</label> 
-      <%= f.text_field :commision, id: :product_commision, :class => "form-control" %>
-    </div>
-  </div>
-  
-  <div class="row align-items-center">
-    <div class="col mt-4">
-      <label>Preview_url</label> 
-      <%= f.text_field :preview_url, id: :product_preview_url, :class => "form-control" %>
-    </div>
-  </div>
-
-  <div class="row align-items-center">
-    <div class="col mt-4">
-      <label>Status</label>
-      <label class="switch">
-        <input type="checkbox">
-        <span class="slider round"></span>
-      </label>
-    </div>
-  </div>
-
-  
-<!-- <div class="row align-items-center">
-    <div class="col mt-4">
-      <label>Created by</label>
-      <%= f.number_field :created_by, id: :product_createdby, :class => "form-control" %>
-    </div>
-  </div>
-
-  <div class="row align-items-center">
-    <div class="col mt-4">
-     <label>is_deleted</label>
-     <%= f.check_box :is_deleted, id: :product_isdeleted, :class => "form-control" %>
-    </div>
-  </div>
-
-  <div class="row align-items-center">
-    <div class="col mt-4">
-     <label>is_active</label>
-     <%= f.check_box :is_active, id: :product_isactive, :class => "form-control" %>
-    </div>
-  </div>
-
-  <div class="row align-items-center">
-    <div class="col mt-4">
-      <label>sku</label>
-      <%= f.text_field :sku, id: :product_sku, :class => "form-control" %>
-    </div>
-  </div> -->
-
-  <div class="row mt-4">
-    <div class="col">
-       <%= f.submit :class=> "btn btn-round btn-success mt-4 mb-5 mb-md-0"%>
-     <!-- <button type="button" class="btn btn-success">Submit</button> -->
-    </div>
-  </div>
+<%= form_for(product, multipart: true) do |f| %>
+<% if product.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+  <ul>
+    <% product.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
 </div>
-</div>
-</div>
-</div>
-</div>
+<% end %>
+<section class="fdb-block">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col mt-4">
+                <label>Title</label>
+                <%= f.text_field :title, id: :product_title, :class => "form-control" %>
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col mt-4">
+                <label>Description</label>
+                <%= f.text_area :description,  id: :product_description, :class => "form-control"%> 
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col mt-4">
+                <label>Long description</label>
+                <%= f.text_area :long_description, id: :product_longdescription, :class => "form-control" %>
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col mt-4">
+                <label>Price</label>
+                <%= f.text_field :price,  id: :product_price, :class => "form-control" %>
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col mt-4">
+                <label>Commision</label> 
+                <%= f.text_field :commision, id: :product_commision, :class => "form-control" %>
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col mt-4">
+                <label>Preview_url</label> 
+                <%= f.text_field :preview_url, id: :product_preview_url, :class => "form-control" %>
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col mt-4">
+                <label>Asset</label> 
+                <%= f.file_field :asset%>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col">
+                <%= f.submit :class=> "btn btn-round btn-success mt-4 mb-5 mb-md-0"%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <% end %>
