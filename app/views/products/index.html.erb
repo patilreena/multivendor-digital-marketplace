@@ -1,45 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="container pt-5">
+  <h4 class="text-center pb-5"> Products</h4>
+  <%= form_tag(products_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search products" %>
+    <%= submit_tag "Search", :title => nil %>
+    <div class="row">
+      <% @products.each do |product| %>
+        <div class="col-sm-4 col-3">
+          <p class="text-h4"> <%= link_to product.title, product %> </p>
+          <p class="text-h4"><%= product.description %> </p>
+          <p class="text-h4"><%= product.long_description %> </p>
+          <p class="text-h4"><%= product.price %> </p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 
-<h1>Products</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Long description</th>
-      <th>Price</th>
-      <th>Commision</th>
-      <th>Status</th>
-     <!--  <th>Created by</th>
-      <th>Is deleted</th>
-      <th>Is active</th>
-      <th>Sku</th> -->
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.title %></td>
-        <td><%= product.description %></td>
-        <td><%= product.long_description %></td>
-        <td><%= product.price %></td>
-        <td><%= product.commision %></td>
-        <td><%= product.status %></td>
-      <!--   <td><%= product.created_by %></td>
-        <td><%= product.is_deleted %></td>
-        <td><%= product.is_active %></td>
-        <td><%= product.sku %></td> -->
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Product', new_product_path %>
+  <% if @products.blank? %>
+  <p>There are no recipes containing the term <%= params[:search] %></p>
+  <% end %>
+</div>

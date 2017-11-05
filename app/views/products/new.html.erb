@@ -1,11 +1,3 @@
- <div class="fdb-box">
-	<div class="row">
-	<div class="col">
-	  <%= link_to "MARKETPLACE", root_path, class: "btn btn-outline-dark product" %>
-	  <h6 class="text-center text-danger upload">Product Upload</h6>
-	</div>
-	</div>
-
-<%= render 'form', product: @product %>
-
-<!--<%= link_to 'Back', products_path %>-->
+<div class="container pt-5">
+	<%= render 'form', product: @product %>
+</div>
