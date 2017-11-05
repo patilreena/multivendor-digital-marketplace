@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101150735) do
+ActiveRecord::Schema.define(version: 20171104101018) do
 
   create_table "cart_products", force: :cascade do |t|
     t.integer  "cart_id"
@@ -63,6 +63,24 @@ ActiveRecord::Schema.define(version: 20171101150735) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "order_id"
+    t.decimal  "unit_price",  precision: 12, scale: 3
+    t.integer  "quantity"
+    t.decimal  "total_price", precision: 12, scale: 3
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+  end
+
+  create_table "order_statuses", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.string   "guest_token"
     t.float    "total_amount"
@@ -94,9 +112,13 @@ ActiveRecord::Schema.define(version: 20171101150735) do
     t.boolean  "is_deleted"
     t.boolean  "is_active"
     t.string   "sku"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.text     "preview_url"
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
   end
 
   create_table "ratings", force: :cascade do |t|
