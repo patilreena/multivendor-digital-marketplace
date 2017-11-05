@@ -1,16 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Stars:</strong>
-  <%= @rating.stars %>
-</p>
+<div class="reviews">
+  <div class="star-rating" data-score= <%= review.rating %></div>
+    <p><%= rating.comment %></p>
+</div>
 
 <p>
   <strong>Comment:</strong>
   <%= @rating.comment %>
 </p>
 
-<p>
+<!-- <p>
   <strong>Is deleted:</strong>
   <%= @rating.is_deleted %>
 </p>
@@ -23,7 +23,7 @@
 <p>
   <strong>User:</strong>
   <%= @rating.user %>
-</p>
+</p> -->
 
 <%= link_to 'Edit', edit_rating_path(@rating) %> |
 <%= link_to 'Back', ratings_path %>
