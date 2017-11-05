@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Guest token:</strong>
@@ -26,4 +26,19 @@
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Back', orders_path %>-->
+
+
+  <section class="fdb-block">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <p><strong>Product:</strong> <%= @order.product.name %></p>
+          <p><strong>Quantity:</strong><%= @order.quantity %></p>
+          <p><strong>Amount to be paid:</strong><%= @order.price %></p>
+            
+            <%= link_to 'Back', orders_path %>
+        </div>
+      </div>
+    </div>
+  </section>
