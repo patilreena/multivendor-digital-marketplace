@@ -5,11 +5,21 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    if params[:search]
+      @products = Product.search(params[:search]).order("created_at DESC")
+    else
+     @products = Product.all.order("created_at DESC")
+    end
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    @product = Product.find(params[:id])
+    @order_item = current_order.order_items.new
+    @ratings = @product.ratings.includes(:user).all
+    @rating  = @product.ratings.build(user_id: current_user.id) if current_user
+
   end
 
   # GET /products/new
@@ -25,7 +35,6 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -53,14 +62,13 @@ class ProductsController < ApplicationController
 
   # DELETE /products/1
   # DELETE /products/1.json
-  def destroy
+   def destroy
     @product.destroy
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -69,6 +77,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :long_description, :price, :commision, :status, :created_by, :is_deleted, :is_active, :sku)
+      params.require(:product).permit(:title, :description, :long_description, :price, :commision, :status, :created_by, :is_deleted, :is_active, :sku, :asset)
     end
 end
