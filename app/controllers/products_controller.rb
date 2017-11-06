@@ -18,8 +18,16 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @order_item = current_order.order_items.new
     @ratings = @product.ratings.includes(:user).all
+    @images = @product.images
     @rating  = @product.ratings.build(user_id: current_user.id) if current_user
 
+
+  end
+
+  def download
+    @product = Product.find(params[:product_id])
+    redirect_to @product.asset.expiring_url(10)
+    return
   end
 
   # GET /products/new
@@ -37,6 +45,12 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     respond_to do |format|
       if @product.save
+
+        if params[:images]
+          params[:images].each { |image|
+            @product.images.create(image: image)
+          }
+        end
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -77,6 +91,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :long_description, :price, :commision, :status, :created_by, :is_deleted, :is_active, :sku, :asset)
+      params.require(:product).permit(:title, :description, :long_description, :price, :commision, :status, :created_by, :is_deleted, :is_active, :sku, :asset, :images)
     end
 end

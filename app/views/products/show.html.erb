@@ -5,12 +5,19 @@
 <section class="fdb-block pb-0 pt-5">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-12 ml-auto col-md-6 col-lg-5">
+      <div class="col-12 col-md-6 col-lg-7">
+        <% @images.each do | picture |%>
+          <%= image_tag(picture.image.expiring_url(10), class: "img-fluid") %>
+        <% end %>
+      </div>
+      <div class="col-12 col-md-6 col-lg-5">
         <h1><%= @product.title %></h1>
         <p class="text-h3"><%= @product.description %></p>
         <p class="text-h3"><%= @product.long_description %></p>
         <p class="text-h4 text-primary"> <%= number_to_currency @product.price %>
-        <p class="text-h4 text-primary"><%= @product.asset.url %></p>
+        <p class="text-h4 text-primary">
+          <%= link_to "Download", product_download_path(@product), target: "_blank" %>
+        </p>
         <%= render "product_row", product: @product, order_item: @order_item %>
       </div>
     </div>

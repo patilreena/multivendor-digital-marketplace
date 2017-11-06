@@ -57,6 +57,12 @@
                 <%= f.file_field :asset%>
               </div>
             </div>
+            <div class="row align-items-center">
+              <div class="col mt-4">
+                <%= f.label :pictures, :class => 'control-label' %>
+                <%= file_field_tag "images[]", type: :file, multiple: true %>
+              </div>
+            </div>
             <div class="row mt-4">
               <div class="col">
                 <%= f.submit :class=> "btn btn-round btn-success mt-4 mb-5 mb-md-0"%>

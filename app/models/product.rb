@@ -1,9 +1,11 @@
 class Product < ApplicationRecord
+  resourcify
   has_many :order_items
-
-  default_scope { where(is_active: true) }
   has_many :ratings, dependent: :destroy
+  has_many :images, dependent: :destroy
   
+  default_scope { where(is_active: true) }
+
   has_attached_file :asset
 
   def self.search(search)

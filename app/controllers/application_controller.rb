@@ -1,12 +1,13 @@
 class ApplicationController < ActionController::Base
   layout :layout_by_resource
-
-  protect_from_forgery with: :exception
-  protect_from_forgery with: :exception
   helper_method :current_order
 
+  protect_from_forgery with: :exception
+  # protect_from_forgery with: :exception
+ 
   def current_order
-    if !session[:order_id].nil?
+    @current_order ||= if !session[:order_id].nil?
+    # if !session[:order_id].nil?
       Order.find(session[:order_id])
     else
       Order.new
@@ -23,7 +24,7 @@ class ApplicationController < ActionController::Base
     end
   end
     def configure_permitted_parameters
-      added_attrs = [:username, :email, :password, :password_confirmation, :remember_me]
+      added_attrs = [:username, :email, :password, :password_confirmation, :remember_me, :last_name, :first_name, :website, :role]
       devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
       devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     end
