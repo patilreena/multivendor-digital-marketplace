@@ -10,29 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171104101018) do
+ActiveRecord::Schema.define(version: 20171106084615) do
 
-  create_table "cart_products", force: :cascade do |t|
-    t.integer  "cart_id"
-    t.integer  "product_id"
-    t.integer  "product_quantity"
-    t.integer  "license_id"
-    t.integer  "order_id"
-    t.float    "price"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["cart_id"], name: "index_cart_products_on_cart_id"
-    t.index ["license_id"], name: "index_cart_products_on_license_id"
-    t.index ["order_id"], name: "index_cart_products_on_order_id"
-    t.index ["product_id"], name: "index_cart_products_on_product_id"
-  end
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "carts", force: :cascade do |t|
     t.string   "guest_token"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["user_id"], name: "index_carts_on_user_id"
+    t.index ["user_id"], name: "index_carts_on_user_id", using: :btree
   end
 
   create_table "email_templates", force: :cascade do |t|
@@ -46,13 +34,16 @@ ActiveRecord::Schema.define(version: 20171104101018) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.text     "url"
     t.string   "type"
     t.integer  "product_id"
-    t.text     "key"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_images_on_product_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "description"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["product_id"], name: "index_images_on_product_id", using: :btree
   end
 
   create_table "licenses", force: :cascade do |t|
@@ -71,8 +62,8 @@ ActiveRecord::Schema.define(version: 20171104101018) do
     t.decimal  "total_price", precision: 12, scale: 3
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
-    t.index ["order_id"], name: "index_order_items_on_order_id"
-    t.index ["product_id"], name: "index_order_items_on_product_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id", using: :btree
+    t.index ["product_id"], name: "index_order_items_on_product_id", using: :btree
   end
 
   create_table "order_statuses", force: :cascade do |t|
@@ -88,7 +79,7 @@ ActiveRecord::Schema.define(version: 20171104101018) do
     t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["user_id"], name: "index_orders_on_user_id"
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
   create_table "payments", force: :cascade do |t|
@@ -98,7 +89,7 @@ ActiveRecord::Schema.define(version: 20171104101018) do
     t.integer  "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_payments_on_order_id"
+    t.index ["order_id"], name: "index_payments_on_order_id", using: :btree
   end
 
   create_table "products", force: :cascade do |t|
@@ -109,11 +100,11 @@ ActiveRecord::Schema.define(version: 20171104101018) do
     t.float    "commision"
     t.string   "status"
     t.integer  "created_by"
-    t.boolean  "is_deleted"
-    t.boolean  "is_active"
+    t.boolean  "is_deleted",         default: false, null: false
+    t.boolean  "is_active",          default: true,  null: false
     t.string   "sku"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.text     "preview_url"
     t.string   "asset_file_name"
     t.string   "asset_content_type"
@@ -129,8 +120,19 @@ ActiveRecord::Schema.define(version: 20171104101018) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_ratings_on_product_id"
-    t.index ["user_id"], name: "index_ratings_on_user_id"
+    t.index ["product_id"], name: "index_ratings_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_ratings_on_user_id", using: :btree
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.string   "resource_type"
+    t.integer  "resource_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
+    t.index ["name"], name: "index_roles_on_name", using: :btree
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -147,8 +149,30 @@ ActiveRecord::Schema.define(version: 20171104101018) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "username"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.text     "avatar"
+    t.integer  "contact_number"
+    t.text     "website"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "users_roles", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+    t.index ["role_id"], name: "index_users_roles_on_role_id", using: :btree
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
+    t.index ["user_id"], name: "index_users_roles_on_user_id", using: :btree
+  end
+
+  add_foreign_key "carts", "users"
+  add_foreign_key "images", "products"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
+  add_foreign_key "orders", "users"
+  add_foreign_key "payments", "orders"
+  add_foreign_key "ratings", "products"
+  add_foreign_key "ratings", "users"
 end

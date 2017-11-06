@@ -5,7 +5,6 @@ class CreateImages < ActiveRecord::Migration[5.0]
       t.string :type
       t.references :product, foreign_key: true
       t.text :key
-
       t.timestamps
     end
   end
