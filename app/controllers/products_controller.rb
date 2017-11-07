@@ -3,14 +3,19 @@ class ProductsController < ApplicationController
 
   # GET /products
   # GET /products.json
-  def index
-    @products = Product.all
-    if params[:search]
-      @products = Product.search(params[:search]).order("created_at DESC")
-    else
+ 
+ def index
+    # @products = Product.all
+   if params[:search]
+     @products = Product.search(params[:search]).order("created_at DESC")
+     puts "-----#{@products.inspect}"
+   else
      @products = Product.all.order("created_at DESC")
-    end
+   end
+
   end
+
+ 
 
   # GET /products/1
   # GET /products/1.json
@@ -20,8 +25,6 @@ class ProductsController < ApplicationController
     @ratings = @product.ratings.includes(:user).all
     @images = @product.images
     @rating  = @product.ratings.build(user_id: current_user.id) if current_user
-
-
   end
 
   def download
@@ -91,6 +94,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :long_description, :price, :commision, :status, :created_by, :is_deleted, :is_active, :sku, :asset, :images)
+      params.require(:product).permit(:title, :description, :long_description, :price, :commision, :status, :created_by, :is_deleted, :is_active, :sku, :asset, :thumbnail, :images, :preview_url)
     end
 end

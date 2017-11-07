@@ -1,19 +1,19 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-RSpec.describe MessagesController, type: :feature do
+# RSpec.describe MessagesController, type: :feature do
 
-	xit "GET new" do
-	  get new_message_url
+# 	xit "GET new" do
+# 	  get new_message_url
 
-	  assert_response :success
+# 	  assert_response :success
 
-	  assert_select 'form' do 
-	    assert_select 'input[type=text]'
-	    assert_select 'input[type=email]'
-	    assert_select 'textarea'
-	    assert_select 'input[type=submit]'
-	  end
-  end
+# 	  assert_select 'form' do 
+# 	    assert_select 'input[type=text]'
+# 	    assert_select 'input[type=email]'
+# 	    assert_select 'textarea'
+# 	    assert_select 'input[type=submit]'
+# 	  end
+#   end
 
   # it "POST create" do
   #   post create_message_url, params: {
@@ -31,6 +31,6 @@ RSpec.describe MessagesController, type: :feature do
   #   assert_match /Message received, thanks!/, response.body
   # end
 
-end
+#end
 
 

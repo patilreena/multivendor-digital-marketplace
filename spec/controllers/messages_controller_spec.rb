@@ -1,6 +1,6 @@
-# require 'rails_helper'
+ require 'rails_helper'
 
-# RSpec.describe MessagesController, type: :controller do
+ RSpec.describe MessagesController, type: :controller do
 
 # 	it "GET new" do
 # 	  get new_message_url
@@ -31,7 +31,25 @@
 #   #   assert_match /Message received, thanks!/, response.body
 #   # end
 
-# end
+   it "POST create" do
+    assert_difference 'ActionMailer::Base.deliveries.size', 1 do
+      post create_message_url, params: {
+        message: {
+          name: 'reena',
+          email: 'reena.patil@outlook.com',
+          body: 'hai'
+        }
+      }
+    end
+
+    assert_redirected_to new_message_url
+
+    follow_redirect!
+
+    assert_match /Message received, thanks!/, response.body
+  end
+
+ end
 
 
 

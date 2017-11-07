@@ -1,28 +1,8 @@
-# require "rails_helper"
+require "rails_helper"
 
-# RSpec.describe MessageMailer, type: :mailer do
-#   describe "contact_me" do
-#     let(:mail) { MessageMailer.contact_me }
+ RSpec.describe MessageMailer, type: :mailer do
 
-#     it "renders the headers" do
-#       expect(mail.subject).to eq("Contact me")
-#       expect(mail.to).to eq(["to@example.org"])
-#       expect(mail.from).to eq(["from@example.com"])
-#     end
-
-#     it "renders the body" do
-#       expect(mail.body.encoded).to match("Hi")
-#     end
-#   end
-
-# end
-
-
-require 'rails_helper'
-
-class MessageMailerTest < ActionMailer::TestCase
-
-  test "contact_me" do
+it "contact_me" do
     message = Message.new name: 'anna',
                           email: 'anna@example.org',
                           body: 'hello, how are you doing?'
@@ -38,4 +18,7 @@ class MessageMailerTest < ActionMailer::TestCase
     assert_equal ['anna@example.org'], email.from
     assert_match /hello, how are you doing?/, email.body.encoded
   end
-end
+   end
+
+
+

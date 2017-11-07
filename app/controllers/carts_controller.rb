@@ -4,13 +4,13 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
-    @carts = Cart.all
+    @order_items = current_order.order_items.includes(:product)
   end
 
   # GET /carts/1
   # GET /carts/1.json
-   def show
-    @order_items = current_order.order_items
+  def show
+    @order_items = current_order.order_items.includes(:product)
   end
 
   # GET /carts/new

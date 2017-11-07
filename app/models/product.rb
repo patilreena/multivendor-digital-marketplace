@@ -3,15 +3,18 @@ class Product < ApplicationRecord
   has_many :order_items
   has_many :ratings, dependent: :destroy
   has_many :images, dependent: :destroy
-  
-  default_scope { where(is_active: true) }
+
+  default_scope { where(is_active: 1) }
 
   has_attached_file :asset
+  has_attached_file :thumbnail
 
   def self.search(search)
-  	where("name LIKE ?", "%#{search}%") 
+  	where("title LIKE ?", "%#{search}%") 
   end
   
+  validates_attachment_content_type :thumbnail, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
   validates_attachment_content_type :asset, content_type: [
       'application/msword',
       'application/pdf',

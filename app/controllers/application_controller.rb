@@ -3,14 +3,16 @@ class ApplicationController < ActionController::Base
   helper_method :current_order
 
   protect_from_forgery with: :exception
-  # protect_from_forgery with: :exception
  
   def current_order
-    @current_order ||= if !session[:order_id].nil?
-    # if !session[:order_id].nil?
+    if !session[:order_id].nil?
       Order.find(session[:order_id])
     else
-      Order.new
+      order = Order.new
+      if !current_user.nil?
+        order.user_id = current_user.id;
+      end
+      order
     end
   end
 
@@ -23,11 +25,12 @@ class ApplicationController < ActionController::Base
       "application"
     end
   end
-    def configure_permitted_parameters
-      added_attrs = [:username, :email, :password, :password_confirmation, :remember_me, :last_name, :first_name, :website, :role]
-      devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
-      devise_parameter_sanitizer.permit :account_update, keys: added_attrs
-    end
+
+  def configure_permitted_parameters
+    added_attrs = [:username, :email, :password, :password_confirmation, :remember_me, :last_name, :first_name, :website, :role]
+    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+  end
 end
 
 

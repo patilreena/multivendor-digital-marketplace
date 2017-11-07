@@ -4,8 +4,11 @@
 
 <section class="fdb-block pb-0 pt-5">
   <div class="container">
-    <div class="row align-items-center">
+    <div class="row">
       <div class="col-12 col-md-6 col-lg-7">
+        <div class="pb-5">
+          <%= image_tag(@product.thumbnail.expiring_url(10), class: "img-fluid") %>
+        </div>
         <% @images.each do | picture |%>
           <%= image_tag(picture.image.expiring_url(10), class: "img-fluid") %>
         <% end %>
@@ -28,46 +31,3 @@
     <%= render 'products/disqus' %>
   </div>
 </section>
-
-        
-<!-- <p>
-  <strong>Title:</strong>
-  <%= @product.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Long description:</strong>
-  <%= @product.long_description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>Commision:</strong>
-  <%= @product.commision %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @product.status %>
-</p>
-
-
-<p>
-  <strong>Asset:</strong>
-  <%= @product.asset.url %>
-</p>
-
-
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
- -->

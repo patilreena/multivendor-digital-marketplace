@@ -2,10 +2,10 @@
   <%= link_to "MARKETPLACE", root_path, class: "btn btn-outline-light logo text-white" %>
   <ul class="navbar-nav ml-auto">
     <li class="nav-item">
-      <a href="#" class="nav-link mr-4 text-white">
-        <i class="fa fa-search"> </i>
-      </a>
-    </li>
+      <%= form_tag(products_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Products", class: "form-control" %>
+      <% end %>
+     </li>
     <li class="nav-item">
       <% if user_signed_in? %>
       <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => "nav-link mr-4 text-white") %>      <% else %>

@@ -1,4 +1,4 @@
 <%= link_to carts_path , class: "nav-link mr-4 text-white" do %>
   <i class="fa fa-shopping-cart"></i> 
-  <%= current_order.order_items.size %> Items in Cart (<%= number_to_currency current_order.subtotal %>)
+  <%= current_order.order_items.size %> Items in Cart (<%= number_to_currency current_order.total_amount %>)
 <% end %>

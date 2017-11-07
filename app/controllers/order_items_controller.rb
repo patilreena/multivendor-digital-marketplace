@@ -1,19 +1,15 @@
 class OrderItemsController < ApplicationController
+
+
   def create
     @order = current_order
     @order_item = @order.order_items.new(order_item_params)
-    puts "---order_items create @order_items: #{@order_item.inspect}"
-    respond_to do |format|
-      if @order_item.save
-        puts "---order_items create after save @order_items: #{@order_item.inspect}"
-        session[:order_id] = @order.id
-        format.html { redirect_to product_path(@order_item.product_id), notice: 'Order Item was successfully created.' }
-      else
-        format.html { redirect_to product_path(@order_item.product_id) }
-        format.json { render json: @order_item.errors, status: :unprocessable_entity }
-      end
-    end
+    @order.order_status_id = 1
+    @order.save
+    puts @order.errors.inspect
+    session[:order_id] = @order.id
   end
+
 
   def update
     @order = current_order
@@ -30,6 +26,6 @@ class OrderItemsController < ApplicationController
   end
 private
   def order_item_params
-    params.require(:order_item).permit(:quantity, :product_id)
+    params.require(:order_item).permit(:quantity, :product_id, :unit_price)
   end
 end

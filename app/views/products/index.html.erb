@@ -1,22 +1,31 @@
 <div class="container pt-5">
   <h4 class="text-center pb-5"> Products</h4>
-  <%= form_tag(products_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search products" %>
-    <%= submit_tag "Search", :title => nil %>
     <div class="row">
       <% @products.each do |product| %>
         <div class="col-sm-4 col-3">
-          <p class="text-h4"> <%= link_to product.title, product %> </p>
-          <p class="text-h4"><%= product.description %> </p>
-          <p class="text-h4"><%= product.long_description %> </p>
-          <p class="text-h4"><%= product.price %> </p>
-         
+
+          <div class="card">
+            <%= image_tag(product.thumbnail.expiring_url(10), class: "card-img-top") %>
+            <div class="card-body">
+              <h4 class="card-title">
+                <%= link_to product.title, product %>
+              </h4>
+              <p class="card-text"><%= product.description %></p>
+              <div class="d-flex justify-content-between bd-highlight mb-3">
+                <div class="p-1 text-primary">
+                  <h5><%= number_to_currency(product.price) %></h5>
+                </div>
+                <div class="p-1">
+                  <%= link_to "Preview", product.preview_url, :target => '_blank', :class => "btn btn-primary" %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
-  <% end %>
 
   <% if @products.blank? %>
-  <p>There are no recipes containing the term <%= params[:search] %></p>
+  <p>There are no products containing the term <%= params[:search] %></p>
   <% end %>
 </div>

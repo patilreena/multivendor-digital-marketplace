@@ -59,6 +59,12 @@
             </div>
             <div class="row align-items-center">
               <div class="col mt-4">
+                <label>Thumbnail</label> 
+                <%= f.file_field :thumbnail%>
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col mt-4">
                 <%= f.label :pictures, :class => 'control-label' %>
                 <%= file_field_tag "images[]", type: :file, multiple: true %>
               </div>

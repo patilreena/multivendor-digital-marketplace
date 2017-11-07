@@ -7,17 +7,16 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= csrf_meta_tags %>
-    
   </head>
 
   <body>
+    <%= render :partial => "partials/navbar" %>
+    <div id="wrapper">
+      <%= yield %>
+    </div>
+    <%= render :partial => "partials/footer" %>
     
-      <%= render :partial => "partials/navbar" %>
-      <div id="wrapper">
-        <%= yield %>
-      </div>
-      <%= render :partial => "partials/footer" %>
-      <script id="dsq-count-scr" src="//digital-marketplace.disqus.com/count.js" async></script>
+    <script id="dsq-count-scr" src="//digital-marketplace.disqus.com/count.js" async></script>
   </body>
 </html>
 
