@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106135611) do
+ActiveRecord::Schema.define(version: 20171107141330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 20171106135611) do
     t.text     "description"
     t.text     "long_description"
     t.float    "price"
-    t.float    "commision"
+    t.float    "commision",              default: 20.0
     t.string   "status"
     t.integer  "created_by"
     t.boolean  "is_deleted",             default: false, null: false
@@ -116,6 +116,8 @@ ActiveRecord::Schema.define(version: 20171106135611) do
     t.string   "thumbnail_content_type"
     t.integer  "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
+    t.integer  "seller_id"
+    t.index ["seller_id"], name: "index_products_on_seller_id", using: :btree
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -180,6 +182,7 @@ ActiveRecord::Schema.define(version: 20171106135611) do
   add_foreign_key "orders", "order_statuses"
   add_foreign_key "orders", "users"
   add_foreign_key "payments", "orders"
+  add_foreign_key "products", "users", column: "seller_id"
   add_foreign_key "ratings", "products"
   add_foreign_key "ratings", "users"
 end

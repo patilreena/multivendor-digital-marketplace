@@ -38,6 +38,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.6'
   gem 'pg'
+  gem 'dotenv-rails'
 end
 
 group :development do

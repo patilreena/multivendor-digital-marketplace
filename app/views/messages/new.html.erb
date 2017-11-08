@@ -1,10 +1,30 @@
-<%= form_for @message, url: create_message_url do |f| %>
-  <%= notice %>
-  <%= @message.errors.full_messages.join(', ') %>
+<div class="container">
+  <div class="row text-center justify-content-center">
+    <div class="col-12 col-md-8 col-lg-7">
+      <h1>Contact Us</h1>
+    </div>
+  </div>
+  <div class="row pt-4">
+    <div class="col-12 col-md-6">
+      <iframe class="map"  src="https://www.google.com/maps/embed/v1/place?q=Level+2%2F7+Kelly+St%2C+Ultimo+NSW+2007&zoom=17&key=AIzaSyBvBcMc0tlCBoixamEixBoUOe1ZF7utoqM"
+        width="100%" height="300" frameborder="0" style="border:0" allowfullscreen>
+      </iframe>
+    </div>
+    <%= form_for @message, url: create_message_url do |f| %>
+      <%= notice %>
+  		<%= @message.errors.full_messages.join(', ') %>
+      <div class="form-group">
+        <%= f.text_field :name, placeholder: 'name', class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.email_field :email, placeholder: 'email', class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.text_area :body, placeholder: 'body', cols: "40", rows: "10", class: "form-control" %>
+      </div>
+      <%= f.submit 'Send', class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
 
-  <%= f.text_field :name, placeholder: 'name' %>
-  <%= f.email_field :email, placeholder: 'email' %>
-  <%= f.text_area :body, placeholder: 'body' %>
-  <%= f.submit 'Send' %>
-<% end %>
 

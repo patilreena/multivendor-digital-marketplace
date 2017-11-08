@@ -32,34 +32,30 @@
  </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <div class="card" style="width: 20rem;">
-       <%= image_tag "slide1.jpg", class:"img" %>
-      <div class="card-body">
-    <h4 class="card-title">Card title</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
+<div class="container pt-5">
+  <h4 class="text-center pb-5"> Products</h4>
+    <div class="row">
+      <% @products.each do |product| %>
+        <div class="col-sm-4 col-3">
+
+          <div class="card">
+            <%= image_tag(product.thumbnail.expiring_url(10), class: "card-img-top") %>
+            <div class="card-body">
+              <h4 class="card-title">
+                <%= link_to product.title, product %>
+              </h4>
+              <p class="card-text"><%= product.description %></p>
+              <div class="d-flex justify-content-between bd-highlight mb-3">
+                <div class="p-1 text-primary">
+                  <h5><%= number_to_currency(product.price) %></h5>
+                </div>
+                <div class="p-1">
+                  <%= link_to "Preview", product.preview_url, :target => '_blank', :class => "btn btn-primary" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
-    <div class="col-sm">
-       <%= image_tag "slide1.jpg", class:"img"%>
-    </div>
-    <div class="col-sm">
-       <%= image_tag "slide1.jpg", class:"img"%>
-    </div>
-  </div>
-  <div class="row pt-5">
-    <div class="col-sm">
-      <%= image_tag "slide1.jpg", class:"img" %>
-    </div>
-    <div class="col-sm">
-       <%= image_tag "slide1.jpg", class:"img"%>
-    </div>
-    <div class="col-sm">
-       <%= image_tag "slide1.jpg", class:"img"%>
-    </div>
-  </div>
 </div>

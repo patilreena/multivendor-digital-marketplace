@@ -17,6 +17,11 @@
       <%= link_to('JOIN NOW', new_user_registration_path, :class => "nav-link mr-4 text-white")  %>
       <% end %>
     </li>
+    <li class="nav-item">
+      <% if user_signed_in? && current_user.has_role?(:seller) %>
+        <%= link_to('Dashboard', seller_dashboard_path, :class => "nav-link mr-4 text-white")  %>
+      <% end %>
+    </li>
     <li class="navbar-item">
       <%= render 'layouts/cart_text' %>
     </li>

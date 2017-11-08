@@ -21,6 +21,12 @@ class CartsController < ApplicationController
   # GET /carts/1/edit
   def edit
   end
+  
+  def download
+    @product = Product.find(params[:product_id])
+    redirect_to @product.asset.expiring_url(10)
+    return
+  end
 
   # POST /carts
   # POST /carts.json

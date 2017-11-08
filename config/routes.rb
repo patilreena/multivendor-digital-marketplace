@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :order_items, only: [:create, :update, :destroy]
   resources :charges
+  get 'thanks', to: 'charges#thanks', as: 'thanks'
   root 'home#index'
 
   devise_scope :user do
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => {:registrations => "registrations"}
 
-  get 'hello_page/hello'
+  get 'seller/dashboard'
 
   
   get 'contact-me', to: 'messages#new', as: 'new_message'

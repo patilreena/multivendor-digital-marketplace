@@ -1,4 +1,5 @@
 <%= form_for(product, multipart: true) do |f| %>
+<%= f.hidden_field :seller_id, val: current_user.id %>
 <% if product.errors.any? %>
 <div id="error_explanation">
   <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -37,12 +38,6 @@
               <div class="col mt-4">
                 <label>Price</label>
                 <%= f.text_field :price,  id: :product_price, :class => "form-control" %>
-              </div>
-            </div>
-            <div class="row align-items-center">
-              <div class="col mt-4">
-                <label>Commision</label> 
-                <%= f.text_field :commision, id: :product_commision, :class => "form-control" %>
               </div>
             </div>
             <div class="row align-items-center">

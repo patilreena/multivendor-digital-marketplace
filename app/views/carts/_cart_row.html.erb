@@ -1,7 +1,7 @@
 <%= form_for order_item, remote: true do |f| %>
   <tr>
     <th scope="row"><%= index+1 %></th>
-    <th scope="row"><%= product.title %></th>
+    <th scope="row"><%= link_to product.title, product_path(product) %></th>
     <td><%= number_to_currency order_item.unit_price %></td>
     <td>
       <%= f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control quantity-inc", min: 1 %>
@@ -12,6 +12,8 @@
 
       <%= f.submit "Update Quantity", class: "btn btn-link btn-sm" %>
       <%= link_to "Delete", order_item, { data: { confirm: "Are you sure you wish to delete the product '#{order_item.product.title}' from your cart?" }, method: :delete, remote: true, class: "btn text-danger btn-link btn-sm" } %>
+
+       
     </td>
   </tr>
 <% end %>

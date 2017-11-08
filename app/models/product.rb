@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   resourcify
+  belongs_to :seller, class_name: 'User'
   has_many :order_items
   has_many :ratings, dependent: :destroy
   has_many :images, dependent: :destroy

@@ -1,5 +1,5 @@
 <div class="container">
-  <h4 class="text-center pt-5"> Product name</h4>
+  <h4 class="text-center pt-5"> <%= @product.title%> </h4>
 </div>
 
 <section class="fdb-block pb-0 pt-5">
@@ -18,16 +18,13 @@
         <p class="text-h3"><%= @product.description %></p>
         <p class="text-h3"><%= @product.long_description %></p>
         <p class="text-h4 text-primary"> <%= number_to_currency @product.price %>
-        <p class="text-h4 text-primary">
-          <%= link_to "Download", product_download_path(@product), target: "_blank" %>
-        </p>
         <%= render "product_row", product: @product, order_item: @order_item %>
       </div>
     </div>
   </div>
 
   <div class="container">
-    <%= render 'products/stripe' %>
+  <!--   <%= render 'products/stripe' %> -->
     <%= render 'products/disqus' %>
   </div>
 </section>

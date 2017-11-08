@@ -1,0 +1,41 @@
+<div class="container pt-5">
+	<h1>Dashboard <small class="font-weight-light text-secondary">seller control panel</small></h1>
+	<div class="alert alert-primary" role="alert">
+		<% if @products.empty? %>
+			<p class="font-weight-bold">You're ready to upload your first item!</p>
+		<% end %>
+		<p>
+			If you have your item packaged in a .zip file then you can click the Upload an item button to start adding your first item to the marketplace.
+		</p>
+		<%= link_to "Upload product", new_product_path, class: "btn btn-primary btn-sm" %>
+	</div>
+
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">Name</th>
+	      <th scope="col">Price</th>
+	      <th scope="col">Commision</th>
+	      <th scope="col">Orders</th>
+	      <th scope="col">Action</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  	<% @products.each_with_index do |product, index|%>
+		    <tr>
+		      <th scope="row"><%= index + 1 %></th>
+		      <td><%= product.title%></td>
+		      <td><%= number_to_currency(product.price) %></td>
+		      <td><%= product.commision%> %</td>
+		      <td><%= product.order_items.length %></td>
+		      <td>
+		      	<%= link_to "details", product_path(product), class: "btn btn-primary btn-sm" %>
+		      	<%= link_to "update", edit_product_path(product), class: "btn btn-primary btn-sm"  %>
+		      </td>
+		    </tr>
+	  	<% end%>
+	  </tbody>
+	</table>
+</div>
+

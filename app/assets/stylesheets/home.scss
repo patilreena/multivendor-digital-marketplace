@@ -62,3 +62,43 @@ border: 3px solid #ffffff;
 .img {
     width: 80%;
 }
+
+.footer{
+    padding: 1rem 0;
+    overflow: hidden;
+    background-color: #2e2e2e;
+    color: #CCC;
+}
+.footer .copyright{
+    font-size: 80%;
+}
+.footer ul{
+    list-style: none;
+    padding: 0;
+}
+.footer .social-links a{
+    color: #CCC;
+}
+.footer .social-links span{
+    padding: 7px;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.footer .social-links span:hover{
+    color: #fff;
+}
+.footer .social-links .twitter:hover{
+    background-color: #3498DB;
+}
+
+.footer .social-links .facebook:hover{
+    background-color: #0077B5;
+}
+
+.footer .social-links .pinterest:hover{
+    background-color: #FF0000;
+}
+
