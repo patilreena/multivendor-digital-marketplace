@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :charges
   get 'thanks', to: 'charges#thanks', as: 'thanks'
   root 'home#index'
+  get 'contact' => 'static_pages#contact'
 
   devise_scope :user do
     get 'seller/sign_up'  => 'seller/registrations#new',   :as => :new_seller_registration
