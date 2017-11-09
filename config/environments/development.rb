@@ -1,8 +1,5 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-ENV["SES_SMTP_USERNAME"] = 'AKIAIJ75ZOBQOTZSTQWQ'
-ENV["SES_SMTP_PASSWORD"] = 'Aqdh6SU02x+AAH6VSLfvwNeIvXkQqh+D8ai5nS7T60Dn'
-
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.

@@ -23,8 +23,8 @@ files:
     destination: /home/ec2-user/ruby-on-rails/vendor
   - source: /public/
     destination: /home/ec2-user/ruby-on-rails/public
-  - source: /test/
-    destination: /home/ec2-user/ruby-on-rails/test
+  - source: /spec/
+    destination: /home/ec2-user/ruby-on-rails/spec
 hooks:
   AfterInstall:
     - location: scripts/install_dependencies
