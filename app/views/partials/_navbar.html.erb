@@ -1,20 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <%= link_to "MARKETPLACE", root_path, class: "btn btn-outline-light logo text-white" %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark top-navbar">
+  <%= link_to root_path, class: "logo" do %>
+      <%= image_tag("logo.png") %> ThinkDigital
+  <% end %>
   <ul class="navbar-nav ml-auto">
-    <li class="nav-item">
+    <li class="nav-item search">
       <%= form_tag(products_path, :method => "get", id: "search-form") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Products", class: "form-control" %>
+      <div class="input-group">
+        <%= text_field_tag :search, params[:search], placeholder: "Search Products", class: "form-control" %>
+        <span class="input-group-addon" id="basic-addon1">
+          <i class="fa fa-search"></i>
+        </span>
+      </div>
       <% end %>
      </li> 
     <li class="nav-item">
+      <%= link_to('Contact', contact_path, :class => "nav-link mr-4 text-white")  %>
+    </li>
+    <li class="nav-item">
+      <%= link_to('Products', products_path, :class => "nav-link mr-4 text-white")  %>
+    </li>
+    <li class="nav-item">
       <% if user_signed_in? %>
       <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => "nav-link mr-4 text-white") %>      <% else %>
-      <%= link_to('SIGN IN', new_user_session_path, :class => "nav-link mr-4 text-white")  %>
+      <%= link_to('Login', new_user_session_path, :class => "nav-link mr-4 text-white")  %>
       <% end %>
     </li>
     <li class="nav-item">
       <% unless user_signed_in? %>
-      <%= link_to('JOIN NOW', new_user_registration_path, :class => "nav-link mr-4 text-white")  %>
+      <%= link_to('Register', new_user_registration_path, :class => "nav-link mr-4 text-white")  %>
       <% end %>
     </li>
     <li class="nav-item">

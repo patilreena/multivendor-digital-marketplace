@@ -5,6 +5,6 @@ class ContactController < ApplicationController
 
   def send_email
     ContactMailer.send_email(name: params[:name], email: params[:email], message: params[:message]).deliver
-    redirect_to root_url, notice: "Email sent!"
+    redirect_to contact_url, notice: "Email sent!"
   end
 end

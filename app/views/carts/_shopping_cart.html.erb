@@ -1,5 +1,3 @@
-<h2 class="pt-5">Your Cart, you'r one step away..</h2>
-
 <% if !@order_item.nil? && @order_item.errors.any? %>
   <div class="alert alert-danger">
     <ul>
@@ -10,18 +8,30 @@
   </div>
 <% end %>
 <% if @order_items.size == 0 %>
-  <p class="text-center">
-    There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
-  </p>
+  <div class="text-center pt-5">
+    <p>
+      <i class="fa fa-shopping-cart fa-5x"></i>
+    </p>
+    <h3 class="text-center">
+      Your Shopping Cart is empty
+    </h3>
+    <p>Please <%= link_to "go back", products_path %> and add some items to your cart.</p>
+  </div>
 <% else %>
+  <div class="row">
+    <div class="col text-left p-4">
+      <h5>My Shopping Cart (<%= @order_items.size %> Items)</h5>
+    </div>
+    <div class="col p-4">
+      <h5>Total: <%= number_to_currency current_order.total_amount%></h5>
+    </div>
+  </div>
 <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Product</th>
       <th scope="col">Price</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Total</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -29,14 +39,6 @@
     <% @order_items.each_with_index do |order_item, index| %>
       <%= render 'carts/cart_row', index: index, product: order_item.product, order_item: order_item, show_total: true %>
     <% end %>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>Total: <%= number_to_currency current_order.total_amount%></td>
-    <td></td>
-    
-
   </tbody>
 </table>
 <% end %>

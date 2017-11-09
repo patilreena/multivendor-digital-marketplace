@@ -1,44 +1,16 @@
 <div class="banner">
   <div class="action-btns text-center">
-    <%= link_to '<button type="button" class="btn btn-primary">Buy now</button>'.html_safe, products_path %>
-    <%= link_to '<button type="button" class="btn">Start selling</button>'.html_safe, new_seller_registration_path %>
+    <%= link_to 'Buy now', products_path,  class: "btn btn-danger btn-lg" %>
+    <%= link_to 'Start selling', new_seller_registration_path,  class: "btn btn-danger btn-lg" %>
   </div>
 </div>
 
-
-<div class="container">
- <h4 class="text-center pt-5"> Products</h4>
- <div class="flexslider">
-  <ul class="slides">
-    <li>
-      <%= image_tag "slide1.jpg"%>
-    </li>
-    <li>
-      <%= image_tag "slide2.jpg"%>
-    </li>
-    <li>
-      <%= image_tag "slide3.jpg"%>
-    </li>
-    <li>
-     <%= image_tag "slide3.jpg"%>
-    </li>
-    <li>
-     <%= image_tag "slide3.jpg"%>
-    </li>
-    <li>
-     <%= image_tag "slide3.jpg"%>
-    </li>
-   </ul>
- </div>
-</div>
-
 <div class="container pt-5">
-  <h4 class="text-center pb-5"> Products</h4>
     <div class="row">
       <% @products.each do |product| %>
         <div class="col-sm-4 col-3">
 
-          <div class="card">
+          <div class="card product-tile">
             <%= image_tag(product.thumbnail.expiring_url(10), class: "card-img-top") %>
             <div class="card-body">
               <h4 class="card-title">

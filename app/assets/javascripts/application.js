@@ -34,6 +34,16 @@ $(window).on('load', function() {
   });
 });
 
+$(document).ready(ready);
+$(document).on('page:load', ready);
+
+var ready = function() {    
+   setTimeout(clearNotice, 1000);  //Flash fade
+};
+
+function clearNotice(){
+  $(".notice").animate({opacity:'0'}, 1500);
+}
 
  /*
     Get Disqus comment counts given an array of URLs

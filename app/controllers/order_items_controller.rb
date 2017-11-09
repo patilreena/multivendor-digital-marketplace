@@ -5,7 +5,12 @@ class OrderItemsController < ApplicationController
     @order = current_order
     @order_item = @order.order_items.new(order_item_params)
     @order.order_status_id = 1
-    @order.save
+    respond_to do |format|
+      if @order.save
+        format.html {redirect_to @order_item.product, notice: 'Product is successfully added to cart.'}
+        format.json { render :show, status: :created, location: @order_item.product }
+      end
+    end
     session[:order_id] = @order.id
   end
 

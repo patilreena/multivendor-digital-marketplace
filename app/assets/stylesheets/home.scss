@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
  .banner {
- 	background-image: url("banner.jpg");
+ 	background-image: url("banner-1.jpg");
  	width: 100%;
  	opacity: 1.7;
  	height: 400px;
@@ -24,8 +24,35 @@
     	}
     }
  }
+
+.logo {
+    color: #fff;
+    font-size: 2em;
+    font-weight: bold;
+
+    &:hover, &:active, &:focus{
+        color: #fff;
+        text-decoration: none;
+    }
+
+    img{
+        width: 50px;
+    }
+}
+
+.top-navbar{
+    background-color: #5ca7b9 !important;
+}
 .search {
-	margin-top: 0.7rem;
+    width: 300px;
+    margin-right: 1rem;
+    .input-group{
+        height: 40px;
+    }
+    input{
+        border:0;
+        border-radius: 2px;
+    }
 }
 .top-button {
   padding-top: 10px;
@@ -52,15 +79,9 @@ border: 3px solid #ffffff;
 }
 .register {
 	background-image: url("hero-image-one.jpg");
-	height: 1042px;
+	height: 900px;
 	opacity: 1.5;
 	background-size: cover;
-}
-.top {
-    background-color: currentColor;
-}
-.img {
-    width: 80%;
 }
 
 .footer{

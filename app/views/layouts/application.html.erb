@@ -12,6 +12,7 @@
   <body>
     <%= render :partial => "partials/navbar" %>
     <div id="wrapper">
+      <%= render 'layouts/flash_messages' %>
       <%= yield %>
     </div>
     <%= render :partial => "partials/footer" %>

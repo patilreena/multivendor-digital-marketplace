@@ -1,0 +1,8 @@
+<div class="custom-flash-messages">
+  <% flash.each do |key, value| %>
+    <div class="<%= flash_class(key) %>">
+      <a href="#" data-dismiss="alert" class="close">×</a>
+      <%= value %>
+    </div>
+  <% end %>
+</div>

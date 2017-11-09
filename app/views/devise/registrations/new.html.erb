@@ -5,9 +5,11 @@
       <%= devise_error_messages! %>
       <div class="fdb-box">
        <div class="row">
-        <div class="col">
-          <%= link_to "MARKETPLACE", root_path, class: "btn btn-outline-light top-button" %>
-          <h6 class="text-center text-white sub-heading">REGISTER NEW ACCOUNT</h6>
+        <div class="col sub-heading text-center">
+          <%= link_to root_path, class: "logo" do %>
+            <%= image_tag("logo.png") %> ThinkDigital
+          <% end %>
+          <h6 class="text-center text-white pt-5">REGISTER NEW ACCOUNT</h6>
         </div>
        </div>
       

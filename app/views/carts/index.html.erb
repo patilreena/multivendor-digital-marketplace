@@ -2,6 +2,8 @@
 
 <div class="shopping-cart">
   <%= render "shopping_cart" %>
+  <% if @order_items.size > 0 %>
   <%= render "charges/new", order: current_order %>
+  <%end%>
 </div>
 </div>
