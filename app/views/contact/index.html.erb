@@ -1,0 +1,50 @@
+<% flash.each do |name, msg| %>
+<div class="alert alert-<%= name == 'notice' ? "info" : "danger" %> fade in">
+  <button class="close" data-dismiss="alert">
+  ×
+  </button>
+  <i class="fa-fw fa fa-info"></i>
+  <strong>
+    <Info>
+    <%= name %>!
+  </strong>
+  <%= raw(msg) %>
+</div>
+<% end %>
+<section class="fdb-block">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-12">
+        <h1 class="pt-5">Contact Us</h1>
+      </div>
+    </div>
+    <div class="row pt-4">
+      <div class="col-12 col-md-6">
+        <iframe class="map"  src="https://www.google.com/maps/embed/v1/place?q=Level+2%2F7+Kelly+St%2C+Ultimo+NSW+2007&zoom=17&key=AIzaSyBvBcMc0tlCBoixamEixBoUOe1ZF7utoqM"
+          width="100%" height="300" frameborder="0" style="border:0" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="col-12 col-md-6">
+        <%= form_tag(send_email_path, method: "post", :class=>"form-horizontal") do %>
+        <fieldset>
+          <div class="form-group">
+            <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
+          </div>
+          <!-- Email input-->
+          <div class="form-group">
+            <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
+          </div>
+          <!-- Message body -->
+          <div class="form-group">
+            <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5"></textarea>
+          </div>
+          <!-- Form actions -->
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+          </div>
+        </fieldset>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
