@@ -5,17 +5,14 @@ class ProductsController < ApplicationController
   # GET /products.json
  
  def index
-    # @products = Product.all
+   @products = Product.all
    if params[:search]
      @products = Product.search(params[:search]).order("created_at DESC")
-     puts "-----#{@products.inspect}"
    else
      @products = Product.all.order("created_at DESC")
    end
 
   end
-
- 
 
   # GET /products/1
   # GET /products/1.json

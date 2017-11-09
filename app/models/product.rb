@@ -10,9 +10,10 @@ class Product < ApplicationRecord
   has_attached_file :asset
   has_attached_file :thumbnail
 
-  def self.search(search)
-  	where("title LIKE ?", "%#{search}%") 
-  end
+    def self.search(search)
+  	  where("title LIKE ?", "%#{search}%") 
+     end
+ 
   
   validates_attachment_content_type :thumbnail, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 

@@ -5,7 +5,7 @@
       <%= form_tag(products_path, :method => "get", id: "search-form") do %>
       <%= text_field_tag :search, params[:search], placeholder: "Search Products", class: "form-control" %>
       <% end %>
-     </li>
+     </li> 
     <li class="nav-item">
       <% if user_signed_in? %>
       <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => "nav-link mr-4 text-white") %>      <% else %>
@@ -27,3 +27,4 @@
     </li>
   </ul>
 </nav>
+
