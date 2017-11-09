@@ -75,10 +75,6 @@ test:
 #
 # You can use this database configuration with:
 #
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
-#
 production:
-  <<: *default
-  database: marketplace_production
-  # username: cosmetic_store
+  url: <%= ENV['DATABASE_URL'] %>
+
