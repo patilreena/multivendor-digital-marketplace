@@ -1,5 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+ENV["SES_SMTP_USERNAME"] = 'AKIAIJ75ZOBQOTZSTQWQ'
+ENV["SES_SMTP_PASSWORD"] = 'Aqdh6SU02x+AAH6VSLfvwNeIvXkQqh+D8ai5nS7T60Dn'
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -39,7 +41,17 @@ Rails.application.configure do
   }
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.smtp_settings = {
+  :address => "email-smtp.us-west-2.amazonaws.com",
+  :port => 587,
+  :user_name => ENV["SES_SMTP_USERNAME"], #Your SMTP user
+  :password => ENV["SES_SMTP_PASSWORD"], #Your SMTP password
+  :authentication => :login,
+  :enable_starttls_auto => true
+}
 
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }

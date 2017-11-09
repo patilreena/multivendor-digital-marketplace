@@ -3,23 +3,7 @@ class MessagesController < ApplicationController
     @message = Message.new
   end
 
-
-  # def create
-  #   message_params = params.require(:message).permit(:name, :email, :body)
-  #   @message = Message.new message_params
-
-  #   if @message.valid?
-  #     redirect_to new_message_url, notice: "Message received, thanks!"
-  #   else
-  #     render :new
-  #   end
-  # end
-  
- 
-
-   
-
-    def create
+  def create
     @message = Message.new(message_params)
 
     if @message.valid?

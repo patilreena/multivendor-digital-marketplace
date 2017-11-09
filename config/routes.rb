@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+
   get 'order_items/create'
 
   get 'order_items/update'
@@ -33,6 +35,9 @@ Rails.application.routes.draw do
   get 'contact-me', to: 'messages#new', as: 'new_message'
 
   post 'contact-me', to: 'messages#create', as: 'create_message'
+
+  get 'welcome/index'
+  post '/send_email', to: 'welcome#send_email', as: 'send_email'
   # root 'hello_page#hello'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
