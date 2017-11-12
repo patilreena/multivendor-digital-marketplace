@@ -10,17 +10,32 @@ To kick off the project, I talked to key stakeholders to determine the requireme
 Design process
 -----------------
 I have broken down the entire design process to below multiple steps. 
+ 
+![alt text](https://s3-ap-southeast-2.amazonaws.com/thinkdigital-docs/process.png "AWS Codepipeline")
 
 1. **Workflow**
 	I have created the flowchart of the various user flows that I would like to support  and possible happy paths in the application. Below is the flow diagram,
+
+
+![alt text](https://s3-ap-southeast-2.amazonaws.com/thinkdigital-docs/Digital+Marketplace.png "Workflow")
  
 	
 2. **Entity Relation Diagrams**
 	Rails has a nice semantic way to declare model associations. I modelled my tables with all the possible relations. 
 	
+![alt text](https://s3-ap-southeast-2.amazonaws.com/thinkdigital-docs/erd.png "ERD")
+
 3. **Wireframes**
 below are few of the wireframes , please follow the link to see all the wireframe designs
 
+**Home Page**
+
+![alt text](https://s3-ap-southeast-2.amazonaws.com/thinkdigital-docs/1-Home.png "Home page")
+
+
+**Product details Page**
+
+![alt text](https://s3-ap-southeast-2.amazonaws.com/thinkdigital-docs/product+details.png "Porduct details page")
 
 Generate rails app
 ----------------
@@ -55,6 +70,8 @@ Deployment
 -------------
 
 The application is deployed both on AWS and Heroku. On the AWS side, I used code star to enable easy continuous integration and deployment.
+ 
+![alt text](https://s3-ap-southeast-2.amazonaws.com/thinkdigital-docs/codepipeline.png "AWS Codepipeline")
 
 
 What's Here
