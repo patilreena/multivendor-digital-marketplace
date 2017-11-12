@@ -60,7 +60,7 @@ The application is deployed both on AWS and Heroku. On the AWS side, I used code
 What's Here
 -----------
 
-This sample includes:
+The app includes:
 
 * README.md - this file
 * Gemfile - Gem requirements for the sample application
@@ -86,14 +86,6 @@ This sample includes:
 Getting Started
 ---------------
 
-These directions assume you want to develop on your local computer, and not
-from the Amazon EC2 instance itself. If you're on the Amazon EC2 instance, the
-virtual environment is already set up for you, and you can start working on the
-code.
-
-To work on the sample code, you'll need to clone your project's repository to your
-local computer. If you haven't, do that first. You can find instructions in the
-AWS CodeStar user guide.
 
 1. Install Rails (see http://guides.rubyonrails.org/getting_started.html)
 
