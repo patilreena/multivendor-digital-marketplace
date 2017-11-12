@@ -28,11 +28,6 @@ I have broken down the entire design process to below multiple steps.
 3. **Wireframes**
 below are few of the wireframes , please follow the link to see all the wireframe designs
 
-**Home Page**
-
-![alt text](https://s3-ap-southeast-2.amazonaws.com/thinkdigital-docs/1-Home.png "Home page")
-
-
 **Product details Page**
 
 ![alt text](https://s3-ap-southeast-2.amazonaws.com/thinkdigital-docs/product+details.png "Porduct details page")
