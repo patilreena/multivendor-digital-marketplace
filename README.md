@@ -1,8 +1,61 @@
-Welcome to the AWS CodeStar sample web application
+ThinkDigital: Multivendor digital marketplace
 ==================================================
 
-This sample code helps get you started with a simple Rails web application
-deployed by AWS CodeDeploy to an Amazon EC2 instance.
+
+Concept, Design and build
+-----------------
+To kick off the project, I talked to key stakeholders to determine the requirements and expectations for the project. After gathering the information, I went ahead to create a low fidelity sketch of the digital marketplace
+
+
+Design process
+-----------------
+I have broken down the entire design process to below multiple steps. 
+
+1. **Workflow**
+	I have created the flowchart of the various user flows that I would like to support  and possible happy paths in the application. Below is the flow diagram,
+ 
+	
+2. **Entity Relation Diagrams**
+	Rails has a nice semantic way to declare model associations. I modelled my tables with all the possible relations. 
+	
+3. **Wireframes**
+below are few of the wireframes , please follow the link to see all the wireframe designs
+
+
+Generate rails app
+----------------
+I generated the rails app with postgres as the default database.
+```
+~/apps $ gem install rails --no-ri --no-rdoc
+~/apps $ rails new think-digital -d postgresql
+```
+
+once the rails app is generated from above commands, next steps is to scaffold all the data models based on the ERD diagrams. Scaffold will create views and controller for all the models along with database migration scripts
+
+**Run migrations**
+```
+~/apps/think-digital rails db:migrate
+```
+
+
+Technology Stack
+-----------------
+**Front End:** HTML, CSS, JavaScript, Boostrap
+
+**Backend:** Rails
+
+**Storage:** AWS S3
+
+**Mail Service:** AWS SES
+
+**Deployment:** Heroku, AWS
+
+
+Deployment
+-------------
+
+The application is deployed both on AWS and Heroku. On the AWS side, I used code star to enable easy continuous integration and deployment.
+
 
 What's Here
 -----------
@@ -57,23 +110,3 @@ AWS CodeStar user guide.
         $ rails server
 
 5. Open http://127.0.0.1:3000/ in a web browser to view your application.
-
-What Do I Do Next?
-------------------
-
-Once you have a virtual environment running, you can start making changes to
-the sample Rails web application. We suggest making a small change to
-/app/views/hello_page/hello.html.erb first, so you can see how changes pushed
-to your project's repository are automatically picked up by your project pipeline
-and deployed to the Amazon EC2 instance. (You can watch the progress on your project
-dashboard.) Once you've seen how that works, start developing your own code, and have fun!
-
-Learn more about AWS CodeStar by reading the user guide.  Ask questions or make
-suggestions on our forum.
-
-User Guide: http://docs.aws.amazon.com/codestar/latest/userguide/welcome.html
-
-Forum: https://forums.aws.amazon.com/forum.jspa?forumID=248
-
-adding user name to the user table
-https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address
